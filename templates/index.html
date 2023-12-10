@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            NER
+        </title>
+        <style>
+            body{
+                text-align: center;
+                background-color: beige;
+                font-family: bahnschrift;
+            }
+            form{
+                display: block;
+            }
+            .footer{
+                font-weight: bold;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
+            p{
+                text-align: center;
+
+            }
+            .output{
+                position: relative;
+                top: 25px;
+                width: 50%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #pii_output{
+                padding: 10px;
+                border: 2px solid black;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Name Entity Recognition - Hornet Internship Project</h1>
+        <p>This API takes input and gives you Personally Identifiable Information in the text.</p>
+        <div>
+            <form action="/" method="post" enctype="multipart/form-data
+            ">
+        <input type="text" name="input_text" id="input_text" placeholder="Text..." required>
+        <input type="submit" name="submit" id="submit">
+        </form>
+        </div>
+        <div class="output">
+            {% if final_output %}
+                <p id="pii_output"><b>PII Detected :</b> {{ ", ".join(final_output['pii_detected']) }}</p>
+                <p id="pii_output"><b>Errors :</b> {{ ", ".join(final_output['error']) }}</p>
+            {% endif %}
+        </div>
+        <div class="footer">
+            <p>This model is trained using Spacy, a python package for NLP.</p>
+            <p>Developed by Shivansh Kumar</p>
+        </div>
+    </body>
+</html>
